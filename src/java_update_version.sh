@@ -25,8 +25,8 @@ if ! type "mvn" &> /dev/null; then
     exit 1
 fi
 
-# shellcheck disable=SC2154
-MVN_VERSION=$(mvn -q -Dexec.executable=echo -Dexec.args="${project.version}" --non-recursive exec:exec)
+# shellcheck disable=SC2154 disable=SC2016
+MVN_VERSION="$(mvn -q -Dexec.executable=echo -Dexec.args='${project.version}' --non-recursive exec:exec)"
 
 MVN_DATE="$(date -u '+%y%m%d%H%M%S')"
 
