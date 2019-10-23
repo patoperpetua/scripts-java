@@ -34,4 +34,4 @@ if [ -z "${MAVEN_CLI_OPTS+x}" ]; then
     MAVEN_CLI_OPTS=""
 fi
 
-mvn versions:set "${MAVEN_CLI_OPTS}" -DnewVersion="${MVN_VERSION}-SNAPSHOT-${MVN_DATE}" -DallowSnapshots
+mvn versions:set -DnewVersion="${MVN_VERSION}-SNAPSHOT-${MVN_DATE}" -DallowSnapshots
