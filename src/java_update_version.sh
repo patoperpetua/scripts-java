@@ -30,4 +30,8 @@ MVN_VERSION="$(mvn -q -Dexec.executable=echo -Dexec.args=\${project.version} --n
 
 MVN_DATE="$(date -u '+%y%m%d%H%M%S')"
 
-mvn versions:set -DnewVersion="${MVN_VERSION}-SNAPSHOT-${MVN_DATE}" -DallowSnapshots
+if [ -z "${MAVEN_CLI_OPTS+x}" ]; then
+    MAVEN_CLI_OPTS=""
+fi
+
+mvn versions:set "${MAVEN_CLI_OPTS}" -DnewVersion="${MVN_VERSION}-SNAPSHOT-${MVN_DATE}" -DallowSnapshots
