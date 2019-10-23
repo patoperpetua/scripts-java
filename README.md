@@ -8,7 +8,7 @@ This project contains Linux bash scripts to work with java projects.
 
 ### UPDATE VERSION
 
-It updates the version of a pom file. It adds *-SNAPSHOT* and the timestamp to the version.
+It updates the version of a pom file. It adds the timestamp to the version and if **MVN_SNAPSHOT** is defined or has one argument, it also add *-SNAPSHOT*.
 
 ```bash
 curl -s https://singletonsd.gitlab.io/scripts/java/latest/java_update_version.sh | bash /dev/stdin

@@ -34,4 +34,17 @@ if [ -z "${MAVEN_CLI_OPTS+x}" ]; then
     MAVEN_CLI_OPTS=""
 fi
 
-mvn versions:set -DnewVersion="${MVN_VERSION}-SNAPSHOT-${MVN_DATE}" -DallowSnapshots
+if [ -z "${MVN_SNAPSHOT+x}" ]; then
+    echo "Running common"
+    SNAPSHOT_TEXT="."
+else
+    echo "Running snapshot"
+    SNAPSHOT_TEXT="-SNAPSHOT-"
+fi
+
+if [ $# -ge 1 ]; then
+    echo "Running snapshot"
+    SNAPSHOT_TEXT="-SNAPSHOT-"
+fi
+
+mvn versions:set -DnewVersion="${MVN_VERSION}${SNAPSHOT_TEXT}${MVN_DATE}" -DallowSnapshots
